@@ -51,7 +51,7 @@ class Book:
                 f"ISBN: {self.__ISBN} \n" + \
                 f"Number of copies owned: {self.__num_copies} \n" + \
                 f"Number of copies available: {self.__num_copies_available} \n" + \
-                f"Genre: {'Fiction' if self.__fiction_genre else 'Non-Fiction'} \n"
+                f"Genre: {'Fiction' if self.__fiction_genre else 'Non-Fiction'}" \
 
     def get_title(self) -> str:
         """
@@ -137,7 +137,22 @@ class Book:
         self.__num_copies += num
         self.__num_copies_available += num
 
+    def lend_copy(self):
+        """
+        Decrements the number of available copies in the library because we are lending a copy book
+        """
+        if self.__num_copies_available > 0:
+            self.__num_copies_available -= 1
+        else:
+            raise ValueError("Cannot lend more copies since no available copies")
     
+    def return_copy(self):
+        """
+        Increments the number of available copies in the library because we are recieving a previously lent copy of the book
+        """
+        self.__num_copies_available += 1
+
+
     def decrease_copies(self, num):
         """
         Decreases the number of copies of the book that the library owns by the specified number.
