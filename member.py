@@ -1,4 +1,3 @@
-from ast import List
 from book import Book
 
 
@@ -37,8 +36,10 @@ class Member:
         Returns the phone number of the member.
     set_phone(self, phone)
         Sets the phone of the member.
-    get_books_issued(self) -> List[Book]
+    get_books_issued(self) -> list[Book]
         Returns a list of Book objects representing the books issued to the member.
+    remove_books_issued(self, book) -> None
+        Removes input book object from the books issued list of the member.
     issue_book(self, book: Book) -> bool
         Issues a book to the member. Returns True if successful, False otherwise.
     return_book(self, book: Book) -> bool
@@ -76,11 +77,6 @@ class Member:
                 f"Address: {self.__address} \n" + \
                 f"Phone : {self.__phone} \n" + \
                 f"Books Issued: {self.__books_issued} \n" \
-        # print(f"Member Id: {self.member_id}")
-        # print(f"Name: {self.name}")
-        # print(f"Address: {self.address}")
-        # print(f"Phone: {self.phone}")
-        # print(f"Phone issued: {self.books_issued}")
 
 
     def get_member_id(self) -> str:
@@ -125,48 +121,36 @@ class Member:
         """
         self.__phone = phone
 
-    def get_books_issued(self) -> List(Book):
+    def get_books_issued(self) -> list[Book]:
         """
         Returns a list of Book objects representing the books issued to the member.
         """
         return self.__books_issued
-
-    def issue_book(self, book: Book) -> bool:
+    
+    def remove_book_issued(self, book) -> None:
         """
-        Issues a book to the member. Returns True if successful, False otherwise.
+        Method to edit and remove book from the books issued list for this member
+        """
+        self.__books_issued.remove(book)
+
+    def issue_book(self, book: Book) -> None:
+        """
+        Issues a book to the member.
 
         Parameters:
         -----------
         book : Book
             The Book object to issue to the member.
-
-        Returns:
-        --------
-        bool
-            True if successful, False otherwise.
         """
-        if len(self.__books_issued) >= 5:
-            return False
-
         self.__books_issued.append(book)
-        return True
 
-    def return_book(self, book: Book) -> bool:
+    def return_book(self, book: Book) -> None:
         """
-        Returns a book issued to the member. Returns True if successful, False otherwise.
+        Returns a book issued to the member.
 
         Parameters:
         -----------
         book : Book
             The Book object to return.
-
-        Returns:
-        --------
-        bool
-            True if successful, False otherwise.
         """
-        if book not in self.__books_issued:
-            return False
-
         self.__books_issued.remove(book)
-        return True

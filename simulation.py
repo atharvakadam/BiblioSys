@@ -1,6 +1,7 @@
 from library import Library
 from book import Book
 from member import Member
+from specialmember import SpecialMember
 
 class Simulation:
     def main():
@@ -58,6 +59,40 @@ class Simulation:
         libr.return_book(book1, member1)
         print(book1.get_num_copies_available())
         print(member1.get_books_issued())
+
+        print()
+
+        specialmem1 =  SpecialMember('Atharva','4432 sdaggdsg', '235152526', '23bdjas23')
+        print(specialmem1)
+        libr.lend_book(book1, specialmem1)
+        print(book1.get_num_copies_available())
+        print(specialmem1.get_books_issued())
+
+        libr.return_book(book1, specialmem1)
+        print(book1.get_num_copies_available())
+        print(specialmem1)
+
+        specialmem1.redeem_reward('discount')
+        print(specialmem1)
+
+        specialmem1.redeem_reward('discount')
+        # print(specialmem1)
+
+        # book not borrowed exception
+        libr.return_book(book2, specialmem1)
+
+        book4 = Book('gsga','dfa', 2342, '2d241', 1, True)
+
+        # book doesnt exist in library exception
+        libr.lend_book(book4, specialmem1)
+
+        # duplicate copy lent to same member exception
+        libr.lend_book(book1, specialmem1)
+        libr.lend_book(book1, specialmem1)
+
+        # all copies lent exception
+        libr.lend_book(book1, member3)
+        libr.lend_book(book1, member2)
 
     if __name__ == "__main__":
         main()
