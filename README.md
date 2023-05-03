@@ -1,6 +1,6 @@
 # BiblioSys
 
-This is a Python implementation of a library management system that allows for the management of books and members, as well as lending and returning of books.
+This is a Python implementation of a library management system named BiblioSys that allows for the management of books and members, as well as lending and returning of books.
 
 ## Table of Contents
 
@@ -14,13 +14,13 @@ This is a Python implementation of a library management system that allows for t
 
 To run this program, you must have Python 3 installed. Clone the repository and navigate to the root directory.
 ```
-git clone https://github.com/example/library-management-system.git
-cd library-management-system
+git clone https://github.com/atharvakadam/BiblioSys.git
+cd BiblioSys 
 ```
 
 ## Usage
 
-To use the Library Management System, import the necessary classes from the library package. Here is an example of how to create a library, add books, and add members:
+To use BiblioSys, import the necessary classes from the library, member and book python files. Here is an example of how to create a library, add books, and add members:
 
 ```
 from book import Book
@@ -76,7 +76,7 @@ special_member.redeem_reward('subscription')
 
 ## Classes
 
-The library management system consists of the following classes:
+This library management system consists of the following classes:
 
 ### Book
 
