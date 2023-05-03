@@ -187,3 +187,13 @@ This project includes a suite of unit tests for the classes, implemented using t
 ## Contributing
 
 Contributions to this project are welcome! If you find a bug or have a feature request, please open an issue or submit a pull request.
+
+## Future Development
+
+-   More robust test cases
+-   Online checkout functionality
+-   Payments, Due dates, Authentication microservices
+-   Flask backend setup
+-   React Frontend with TailwindCSS/Bootstrap framework 
+-   RDBMS - MySQL database setup for storing all data
+-   Search function, Pagination, Indexing
