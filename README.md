@@ -4,12 +4,11 @@ This is a Python implementation of a library management system that allows for t
 
 ## Table of Contents
 
--  Installation
--  Usage
--  Classes
--  Testing
--  Contributing
--  License
+-  [Installation](https://github.com/atharvakadam/BiblioSys#installation)
+-  [Usage](https://github.com/atharvakadam/BiblioSys#usage)
+-  [Classes](https://github.com/atharvakadam/BiblioSys#classes)
+-  [Testing](https://github.com/atharvakadam/BiblioSys#testing)
+-  [Contributing](https://github.com/atharvakadam/BiblioSys#contributing)
 
 ## Installation
 
@@ -188,7 +187,3 @@ This project includes a suite of unit tests for the classes, implemented using t
 ## Contributing
 
 Contributions to this project are welcome! If you find a bug or have a feature request, please open an issue or submit a pull request.
-
-## License
-
-This project is licensed under the [MIT License](https://chat.openai.com/c/LICENSE).
