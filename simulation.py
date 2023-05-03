@@ -3,7 +3,7 @@ from book import Book
 from member import Member
 from specialmember import SpecialMember
 
-class Simulation:
+class PlayGround:
     def main():
         libr = Library('123', 'Athenaeum')
         print(libr)

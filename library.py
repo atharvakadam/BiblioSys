@@ -87,14 +87,16 @@ class Library:
         """
         Gets the books in the library
         """
-        return [print(book.get_title()) for book in self.__books]
+        [print(book.get_title()) for book in self.__books]
+        return self.__books
     
     
     def get_members(self) -> list:
         """
         Gets the Members in the library
         """
-        return [print(member.get_name()) for member in self.__members]
+        [print(member.get_name()) for member in self.__members]
+        return self.__members
 
     def add_book(self, book: Book) -> None:
         """
@@ -149,14 +151,18 @@ class Library:
         """
         try:
             if book in self.__books:
-                if book.is_available():
-                    if book not in member.get_books_issued():
-                        book.lend_copy()
-                        member.issue_book(book)
+                if member in self.__members:
+                    if book.is_available():
+                        if book not in member.get_books_issued():
+                            book.lend_copy()
+                            member.issue_book(book)
+                            print(f"Book {book.get_title()} was lent to {member.get_name()} successfully")
+                        else:
+                            raise Exception("Member already has one copy of the book! Duplicate copies can't be assigned to same member")
                     else:
-                        raise Exception("Member already has one copy of the book! Duplicate copies can't be assigned to same member")
+                        raise Exception("All copies of the book are already lent.")
                 else:
-                    raise Exception("All copies of the book are already lent.")
+                    raise Exception("This person is not a member of the library.")
             else:
                 raise Exception("The book is not in the library's collection.")
         except Exception as e:
@@ -172,11 +178,15 @@ class Library:
         member (Member): The member who borrowed the book.
         """
         try:
-            if book in member.get_books_issued():
-                book.return_copy()
-                member.return_book(book)
+            if member in self.__members:
+                if book in member.get_books_issued():
+                    book.return_copy()
+                    member.return_book(book)
+                    print(f"The book {book.get_title()} was returned by {member.get_name()}")
+                else:
+                    raise Exception("The book was not borrowed by the member.")
             else:
-                raise Exception("The book was not borrowed by the member.")
+                raise Exception("This person is not a member of the library.")
         except Exception as e:
             print(e)
 

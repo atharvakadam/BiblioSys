@@ -34,7 +34,7 @@ class SpecialMember(Member):
         Adds a randomized reward coupon to the rewards list.
     """
 
-    def __init__(self, name: str, address: str, phone_number: str, member_id: str):
+    def __init__(self, member_id: str, name: str, address: str, phone_number: str):
         """
         Constructs a SpecialMember object with the given name, age, address, phone number and member ID.
         Initializes the __books_issued list and __rewards_claimed list.
@@ -58,8 +58,9 @@ class SpecialMember(Member):
             The rewards claimed so far
         """
         super().__init__(member_id, name, address, phone_number)
-        self.__reward_points = 200
-        self.__rewards_claimed = []
+        self.__reward_points = 0
+        self.__rewards_claimed = [] 
+        self.__rewards_benchmark = 10 # keep 10 for testing, but default value should be initialized to 200
 
     def __str__(self) -> str:
         """
@@ -102,7 +103,7 @@ class SpecialMember(Member):
     def redeem_reward(self, type_of_reward) -> None:
         """
         Member can redeem a reward for every 200 points met. After claiming the reward, it is added to the __rewards_claimed list and 
-        200 points are deducted.
+        200 points(__rewards_benchmark default is 200, but this can be changed in the constructor) are deducted.
 
         Parameters:
         -----------
@@ -110,12 +111,12 @@ class SpecialMember(Member):
             The type of reward can be either subscription, discount or cashback. Based on input, a reward of that type will be awarded.
         """
         try:
-            if self.__reward_points < 200:
-                raise ValueError(f"Not enough reward points to redeem reward. {200 - self.__reward_points} more points till next reward " )
+            if self.__reward_points < self.__rewards_benchmark:
+                raise ValueError(f"Not enough reward points to redeem reward. {self.__rewards_benchmark - self.__reward_points} more points till next reward " )
             reward_coupon = {'subscription': SubscriptionRewards().issue_reward(), 
                             'discount':DiscountRewards().issue_reward(),
                             'cashback':CashbackRewards().issue_reward()}
-            self.__reward_points -= 200
+            self.__reward_points -= self.__rewards_benchmark
             self.__rewards_claimed.append(reward_coupon[type_of_reward])
         except ValueError as e:
             print(e)
